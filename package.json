@@ -16,5 +16,8 @@
     "url": "https://github.com/oleurud/node-api-workshop/issues"
   },
   "homepage": "https://github.com/oleurud/node-api-workshop#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1"
+  }
 }
