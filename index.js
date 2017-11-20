@@ -1,28 +1,27 @@
 const express = require('express')
 const app = express()
 
-app.get('/', function (req, res) {
-    res.send('Hello World!')
+// responses: more in https://expressjs.com/en/guide/routing.html
+app.get('/json', function (req, res) {
+    const example = {
+        name: 'Pepe'
+    }
+
+    res.json(example)
 })
 
-app.get('/example', function (req, res) {
-    res.send('GET request!')
+app.get('/error', function (req, res) {
+    res.status(403).send('Something was wrong!')
 })
 
-app.post('/example', function (req, res) {
-    res.send('POST request!')
+// requests params
+app.get('/test', function (req, res) {
+    res.send(req.query)
 })
 
-app.put('/example', function (req, res) {
-    res.send('PUT request!')
-})
-
-app.delete('/example', function (req, res) {
-    res.send('DELETE request!')
-})
-
-app.get('/users/:userId/books/:bookId', function (req, res) {
-    res.send(req.params)
+app.post('/test', function (req, res) {
+    // ups! use body-parser!!
+    res.send(req.body)
 })
 
 app.listen(3000, function () {
