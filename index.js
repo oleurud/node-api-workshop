@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
 
 
 // routes
-app.post('/test', function (req, res) {
+app.post('/test', function(req, res, next){ console.log('route middlweare'); next()}, function (req, res) {
     res.send(req.body)
 })
 
