@@ -1,26 +1,15 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+
 const app = express()
 
-// responses: more in https://expressjs.com/en/guide/routing.html
-app.get('/json', function (req, res) {
-    const example = {
-        name: 'Pepe'
-    }
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: true }))
+// parse application/json 
+app.use(bodyParser.json())
 
-    res.json(example)
-})
-
-app.get('/error', function (req, res) {
-    res.status(403).send('Something was wrong!')
-})
-
-// requests params
-app.get('/test', function (req, res) {
-    res.send(req.query)
-})
 
 app.post('/test', function (req, res) {
-    // ups! use body-parser!!
     res.send(req.body)
 })
 
