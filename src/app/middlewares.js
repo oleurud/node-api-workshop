@@ -10,7 +10,6 @@ module.exports = function(app){
     // custom auth middleware (not real ;))
     app.use(function (req, res, next) {
         const token = req.get('Authorization')
-        console.log(token)
 
         if (token === 'tokenmolon') {
             next()

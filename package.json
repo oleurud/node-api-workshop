@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/index.js",
+    "dev-test": "DEBUG=app:test* nodemon test/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,13 @@
   "homepage": "https://github.com/oleurud/node-api-workshop#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
     "express": "^4.16.2",
     "nodemon": "^1.12.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0"
   }
 }

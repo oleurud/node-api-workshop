@@ -6,6 +6,8 @@ require('./src/app/middlewares')(app)
 require('./src/app/routes')(app)
 require('./src/app/errors')(app)
 
+module.exports = app
+
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 })
