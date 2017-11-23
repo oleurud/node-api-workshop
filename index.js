@@ -10,9 +10,8 @@ app.use(bodyParser.json())
 
 
 // custom auth middleware (not real ;))
-app.use(function (req, res, next) {
+app.use( (req, res, next) => {
     const token = req.get('Authorization')
-    console.log(token)
 
     if (token === 'tokenmolon') {
         next()
@@ -23,11 +22,9 @@ app.use(function (req, res, next) {
 
 
 // routes
-app.post('/test', function (req, res) {
+app.post('/test', (req, res) => {
     res.send(req.body)
 })
 
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
-})
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
