@@ -9,12 +9,11 @@ require('./src/app/middlewares')(app)
 require('./src/app/routes')(app)
 require('./src/app/errors')(app)
 
-let port
-if(process.env.MODE === 'test') {
+let port = parameters.port
+if (process.env.MODE === 'test') {
     port = parameters.test.port
-} else {
-    port = parameters.port
 }
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
 
 module.exports = app
