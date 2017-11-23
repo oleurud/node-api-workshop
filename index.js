@@ -1,4 +1,7 @@
 const express = require('express')
+const parameters = require('./parameters')
+const debug = require('debug')('app:index')
+debug('init')
 
 const app = express()
 
@@ -6,6 +9,12 @@ require('./src/app/middlewares')(app)
 require('./src/app/routes')(app)
 require('./src/app/errors')(app)
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+let port
+if(process.env.MODE === 'test') {
+    port = parameters.test.port
+} else {
+    port = parameters.port
+}
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 module.exports = app
