@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 // responses: more in https://expressjs.com/en/guide/routing.html
-app.get('/json', function (req, res) {
+app.get('/json', (req, res) => {
     const example = {
         name: 'Pepe'
     }
@@ -10,20 +10,18 @@ app.get('/json', function (req, res) {
     res.json(example)
 })
 
-app.get('/error', function (req, res) {
+app.get('/error', (req, res) => {
     res.status(403).send('Something was wrong!')
 })
 
 // requests params
-app.get('/test', function (req, res) {
+app.get('/test', (req, res) => {
     res.send(req.query)
 })
 
-app.post('/test', function (req, res) {
+app.post('/test', (req, res) => {
     // ups! use body-parser!!
     res.send(req.body)
 })
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
-})
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
