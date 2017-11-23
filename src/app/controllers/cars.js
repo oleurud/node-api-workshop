@@ -1,6 +1,6 @@
 
 module.exports = {
-    list: function (req, res) {
+    list (req, res) {
         const cars = {
             Lotus: ['Evora', 'Elise'],
             Maserati: ['Ghibli', 'Levante'],
