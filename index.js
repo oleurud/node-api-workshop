@@ -9,10 +9,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 
-app.post('/test', function (req, res) {
-    res.send(req.body)
+app.get('/users/:userId/books/:bookId', (req, res) => {
+    res.send(req.params)
 })
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
-})
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
