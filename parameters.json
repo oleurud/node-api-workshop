@@ -1,6 +1,10 @@
 {
     "port": 3000,
+    "mongodbConnectionUri" : "mongodb://localhost:27017/app", 
+    "redisConnectionUri": "redis://localhost:6379/0",
     "test": {
-        "port":4000
+        "port":4000,
+        "mongodbConnectionUri" : "mongodb://localhost:27017/app-test",
+        "redisConnectionUri": "redis://localhost:6379/1"
     }
 }
