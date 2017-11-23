@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser')
 
-module.exports = function(app){
+module.exports = app => {
     // parse application/x-www-form-urlencoded 
     app.use(bodyParser.urlencoded({ extended: true }))
     // parse application/json 
@@ -8,7 +8,7 @@ module.exports = function(app){
 
 
     // custom auth middleware (not real ;))
-    app.use(function (req, res, next) {
+    app.use((req, res, next) => {
         const token = req.get('Authorization')
 
         if (token === 'tokenmolon') {
