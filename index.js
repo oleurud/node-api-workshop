@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 
 // custom auth middleware (not real ;))
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     const token = req.get('Authorization')
     console.log(token)
 
@@ -23,22 +23,20 @@ app.use(function (req, res, next) {
 
 
 // routes
-app.post('/test', function (req, res) {
+app.post('/test', (req, res) => {
     res.send(req.body)
 })
 
 // route not found
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     res.status(404).send("Route not found!")
 })
 
 // errors handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).send('Something was wrong!')
 })
 
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
-})
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
