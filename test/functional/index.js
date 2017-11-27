@@ -23,7 +23,10 @@ describe('FUNCTIONAL API - INDEX', function(){
             .expect(200)
             .end(function(err,res){
                 expect(err).to.be.null
-                expect(res.body).to.deep.equal(car)
+                expect(res.body).to.deep.equal({
+                    status: true,
+                    data: car
+                })
                 done()
             })
     })
@@ -35,7 +38,10 @@ describe('FUNCTIONAL API - INDEX', function(){
             .expect(200)
             .end(function(err,res){
                 expect(err).to.be.null
-                expect(res.body).to.deep.equal([car])
+                expect(res.body).to.deep.equal({
+                    status: true,
+                    data: [car]
+                })
                 done()
             })
     })

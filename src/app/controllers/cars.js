@@ -1,17 +1,19 @@
 const carsManager = require('../../common/managers/cars')
 
 module.exports = {
-    async getAll (req, res) {
+    async getAll (req, res, next) {
         const cars = await carsManager.getAll()
-        res.json(cars)
+        res.locals.response = cars
+        next()
     },
 
-    async create (req, res) {
+    async create (req, res, next) {
         const { model, engine, color } = req.body
 
         // validation
 
         const car = await carsManager.create(model, engine, color)
-        res.json(car)
+        res.locals.response = car
+        next()
     }
 }

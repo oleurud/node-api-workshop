@@ -15,8 +15,9 @@ mongooseConnection.startClient()
 
 const app = express()
 
-require('./src/app/middlewares')(app)
+require('./src/app/middlewares/main')(app)
 require('./src/app/routes')(app)
+require('./src/app/middlewares/response')(app)
 require('./src/app/errors')(app)
 
 let port = parameters.port
