@@ -1,12 +1,17 @@
+const carsManager = require('../../common/managers/cars')
 
 module.exports = {
-    list (req, res) {
-        const cars = {
-            Lotus: ['Evora', 'Elise'],
-            Maserati: ['Ghibli', 'Levante'],
-            Tesla: []
-        }
+    async getAll (req, res) {
+        const cars = await carsManager.getAll()
+        res.json(cars)
+    },
 
-        res.send(cars)
+    async create (req, res) {
+        const { model, engine, color } = req.body
+
+        // validation
+
+        const car = await carsManager.create(model, engine, color)
+        res.json(car)
     }
 }

@@ -42,7 +42,19 @@ const carSchema = new mongoose.Schema(
 
 
 carSchema.methods = {
+    getPublicInfo() {
+        return {
+            model: this.model,
+            color: this.color,
+            engine: this.engine
+        }
+    }
+}
 
+carSchema.statics = {
+    findAll() {
+        return this.find({})
+    }
 }
 
 module.exports = mongoose.model('Car', carSchema, 'car')
