@@ -2,6 +2,7 @@
 
 const Mocha = require('mocha')
 const mocha = new Mocha({})
+const helper = require('./helper')
 const debug = require('debug')('app:test')
 
 
@@ -25,6 +26,7 @@ mocha.run()
             });
         }
     })
-    .on('end', function() {
+    .on('end', async function() {
+        await helper.cleanDb()
         process.exit()
     });

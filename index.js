@@ -23,7 +23,7 @@ let port = parameters.port
 if(process.env.MODE === 'test') {
     port = parameters.test.port
 }
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => debug(`Example app listening on port ${port}!`))
 
 
 module.exports = app
