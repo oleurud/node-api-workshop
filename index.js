@@ -18,7 +18,7 @@ const app = express()
 require('./src/app/middlewares/main')(app)
 require('./src/app/routes')(app)
 require('./src/app/middlewares/response')(app)
-require('./src/app/errors')(app)
+require('./src/app/middlewares/errors')(app)
 
 let port = parameters.port
 if(process.env.MODE === 'test') {

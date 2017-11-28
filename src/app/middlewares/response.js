@@ -1,8 +1,9 @@
+const errors = require('../../common/services/errors')
 
 module.exports = app => {
     app.use((req, res, next) => {
         if(!res.locals.response) {
-            res.status(404).send("Route not found!")
+            next(errors.NotFound())
         } else {
             res.json({
                 status: true,
