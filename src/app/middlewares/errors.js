@@ -3,7 +3,7 @@ const errors = require('../../common/services/errors')
 
 module.exports = app => {
     app.use((err, req, res, next) => {
-        if (!err instanceof CustomError) {
+        if (!(err instanceof CustomError)) {
             err = errors.Error500()
         }
 
