@@ -3,6 +3,7 @@
 const app = require('../../index')
 const expect = require('chai').expect
 const request = require('supertest').agent(app)
+const errors = require('../../src/common/services/errors')
 const debug = require('debug')('app:test:functional:index')
 
 const car = {
@@ -41,6 +42,22 @@ describe('FUNCTIONAL API - INDEX', function(){
                 expect(res.body).to.deep.equal({
                     status: true,
                     data: [car]
+                })
+                done()
+            })
+    })
+
+    it('should return error Not Found', function(done){
+        const error = errors.NotFound()
+        request
+            .get('/not-exist')
+            .set('Authorization', 'tokenmolon')
+            .expect(error.status)
+            .end(function(err,res){
+                expect(err).to.be.null
+                expect(res.body).to.deep.equal({
+                    status: false,
+                    error: error.message
                 })
                 done()
             })
