@@ -63,4 +63,21 @@ describe('FUNCTIONAL API - INDEX', function(){
                 done()
             })
     })
+
+    it('should return error Unauthorized', function(done){
+        const error = errors.Unauthorized()
+
+        request
+            .post('/cars')
+            .send(car)
+            .expect(error.status)
+            .end(function(err,res){
+                expect(err).to.be.null
+                expect(res.body).to.deep.equal({
+                    status: false,
+                    error: error.message
+                })
+                done()
+            })
+    })
 })

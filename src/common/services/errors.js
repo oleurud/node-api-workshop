@@ -8,4 +8,8 @@ module.exports = {
     Error500(message = 'Something was wrong', status = 500) {
         return new CustomError(message, status)
     },
+
+    Unauthorized(message = 'Unauthorized', status = 401) {
+        return new CustomError(message, status)
+    },
 } 
