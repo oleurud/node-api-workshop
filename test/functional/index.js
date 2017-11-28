@@ -45,4 +45,19 @@ describe('FUNCTIONAL API - INDEX', function(){
                 done()
             })
     })
+
+    it('should return error Not found', function(done){
+        request
+            .get('/not-exists')
+            .set('Authorization', 'tokenmolon')
+            .expect(200)
+            .end(function(err,res){
+                expect(err).to.be.null
+                expect(res.body).to.deep.equal({
+                    status: true,
+                    data: 'Not found'
+                })
+                done()
+            })
+    })
 })
